@@ -1,9 +1,21 @@
 const guessMessage = document.querySelector('.guess-message');
 const question = document.querySelector('.question');
-const numberInput = document.querySelector('.number-input');
 const score = document.querySelector('.score');
 const highscore = document.querySelector('.highscore');
 const again = document.querySelector('.again');
+const check = document.querySelector('.check');
 
-guessMessage.textContent = 'Правильно';
-question.textContent = '20';
+check.addEventListener('click', function() {
+   const numberInput = Number(document.querySelector('.number-input').value);
+   console.log(numberInput, typeof numberInput);
+
+   if (!numberInput) {
+      guessMessage.textContent = 'Введите число';
+   }
+});
+
+
+
+
+
+
