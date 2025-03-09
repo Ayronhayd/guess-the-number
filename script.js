@@ -25,30 +25,20 @@ check.addEventListener('click', function () {
       question.style.width = '40rem';
 
       if (scoreNumber > highScore) {
-         highScore = scoreNumber;  
-         document.querySelector('.highscore').textContent = highScore;       
+         highScore = scoreNumber;
+         document.querySelector('.highscore').textContent = highScore;
       }
-      // число меньше
-   } else if (numberInput > secretNumber) {
 
+   } else if (numberInput !== secretNumber) {
       if (scoreNumber > 1) {
-         guessMessage.textContent = 'Загаданное число меньше';
+         guessMessage.textContent = numberInput > secretNumber ? 'Загаданное число меньше' : 'Загаданное число больше';
          scoreNumber--;
          score.textContent = scoreNumber;
       } else {
          guessMessage.textContent = 'Вы проиграли';
          score.textContent = 0;
       }
-      // число больше
-   } else if (numberInput < secretNumber) {
-      if (scoreNumber > 1) {
-         guessMessage.textContent = 'Загаданное число больше';
-         scoreNumber--;
-         score.textContent = scoreNumber;
-      } else {
-         guessMessage.textContent = 'Вы проиграли';
-         score.textContent = 0;
-      }
+
    }
 });
 
