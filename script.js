@@ -5,14 +5,15 @@ const score = document.querySelector('.score');
 const highscore = document.querySelector('.highscore');
 const again = document.querySelector('.again');
 const check = document.querySelector('.check');
-let scoreNumber = 20;
+const inputField = document.querySelector('.number-input');
 
-const secretNumber = Math.trunc(Math.random() * 20) + 1;
-console.log(secretNumber);
+let secretNumber = Math.trunc(Math.random() * 20) + 1;
+let scoreNumber = 20;
+let highScore = 0;
 
 
 check.addEventListener('click', function () {
-   const numberInput = Number(document.querySelector('.number-input').value);
+   const numberInput = Number(inputField.value);
 
    if (!numberInput) {
       guessMessage.textContent = 'Введите число';
@@ -22,6 +23,11 @@ check.addEventListener('click', function () {
       body.style.backgroundColor = 'green';
       question.textContent = secretNumber;
       question.style.width = '40rem';
+
+      if (scoreNumber > highScore) {
+         highScore = scoreNumber;  
+         document.querySelector('.highscore').textContent = highScore;       
+      }
       // число меньше
    } else if (numberInput > secretNumber) {
 
@@ -44,4 +50,14 @@ check.addEventListener('click', function () {
          score.textContent = 0;
       }
    }
+});
+
+again.addEventListener('click', function () {
+   question.textContent = '???';
+   question.style.width = '25rem';
+   guessMessage.textContent = 'Начни угадывать';
+   scoreNumber = 20;
+   secretNumber = Math.trunc(Math.random() * 20) + 1;
+   body.style.backgroundColor = '#222';
+   inputField.value = '';
 });
